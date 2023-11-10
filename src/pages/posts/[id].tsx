@@ -1,6 +1,7 @@
 import { getPost } from "@/logic/server/utils";
 import IPost from "@/types/i-post";
 import { GetServerSideProps, NextPage } from "next";
+import styles from "@/styles/post.module.css";
 
 interface IProps {
   post: IPost | undefined;
@@ -22,7 +23,10 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
 const Page: NextPage<IProps> = ({ post }) => {
   return post ? (
-    <div dangerouslySetInnerHTML={{ __html: post!.html }}></div>
+    <div
+      className={styles.container}
+      dangerouslySetInnerHTML={{ __html: post!.html }}
+    ></div>
   ) : (
     <div>post is undefined</div>
   );
