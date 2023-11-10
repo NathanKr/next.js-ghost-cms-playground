@@ -11,7 +11,6 @@ export async function getStaticProps() {
   let props: IProps = { posts: [] };
 
   props.posts = await getPosts();
-  // console.log(props.posts);
 
   return {
     props, // will be passed to the page component as props
