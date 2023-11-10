@@ -1,4 +1,4 @@
-import { NextPage } from "next";
+import { GetStaticProps, NextPage } from "next";
 import IPost from "@/types/i-post";
 import { getPosts } from "@/logic/server/utils";
 import Link from "next/link";
@@ -7,7 +7,7 @@ interface IProps {
   posts: IPost[];
 }
 
-export async function getStaticProps() {
+export const getStaticProps : GetStaticProps = async () => {
   let props: IProps = { posts: [] };
 
   props.posts = await getPosts();
@@ -27,7 +27,8 @@ const Home: NextPage<IProps> = ({ posts }) => {
   return (
     <>
       <main>
-        <p>posts : {posts.length}</p>
+        <h2>Welcome to my blog</h2>
+        <h3>My posts : </h3>
         <ul>{elemPosts}</ul>
       </main>
     </>
